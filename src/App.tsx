@@ -24,20 +24,19 @@ function App() {
 
   function setData(userData: any) {
     if (userData) {
-      const name = `${userData.name.title} ${userData.name.first} ${userData.name.last}`;
-      const address = `${userData.location.street.number} ${userData.location.street.name}, ${userData.location.city}, ${userData.location.state}, ${userData.location.country} - ${userData.location.postcode}`;
-      const dob = new Date(userData.dob.date);
-      const dobFormatted = `${dob.getDate()}-${dob.getMonth() + 1}-${dob.getFullYear()}`;
-      const email = userData.email;
-      const phone = userData.phone;
-      const image = userData.picture.large;
+      const {name,location,dob,email,phone,picture}=userData
+      const fullName = `${name.title} ${name.first} ${name.last}`;
+      const fullAddress = `${location.street.number} ${location.street.name}, ${location.city}, ${location.state}, ${location.country} - ${location.postcode}`;
+      const dateOfBirth = new Date(dob.date);
+      const dobFormatted = `${dateOfBirth.getDate()}-${dateOfBirth.getMonth() + 1}-${dateOfBirth.getFullYear()}`;
+      const imageUrl = picture.large;
       setUserInfo({
-        name,
+        name:fullName,
         email,
         dob:dobFormatted,
         phone,
-        image,
-        address
+        image:imageUrl,
+        address:fullAddress
       });
       setLoading(false);
     }
@@ -51,7 +50,7 @@ function App() {
       setData(data[0]);
       localStorage.setItem('userInfo',JSON.stringify(data[0]));
     } catch (err) {
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
