@@ -1,3 +1,11 @@
+Steps to start the application:
+
+1. clone the repository.
+2. run ###`npm install` to install all the dependencies.
+3. run ###`npm start` to start the application in port 3000 localhost.
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
